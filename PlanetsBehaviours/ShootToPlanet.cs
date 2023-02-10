@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootToPlanet : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class ShootToPlanet : MonoBehaviour{
+    
+    [Header("Shooting")]
+    [SerializeField] Transform shotPos;
+    [SerializeField] GameObject projectile;
+    [SerializeField] float startTimeBtwShot;
+    float timeBtwShot;
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         
+        if(timeBtwShot <= 0){
+
+            Instantiate(projectile, shotPos.position, Quaternion.identity);
+            timeBtwShot = startTimeBtwShot;
+        }else{
+
+            timeBtwShot -= Time.deltaTime;
+        }
     }
 }
