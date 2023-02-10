@@ -7,6 +7,7 @@ public class DragAndDrop : MonoBehaviour{
     bool moveAllowed;
     Collider2D col;
     GameMaster gm;
+    AudioSource audioSource;
 
     [Header("Particles")]
     [SerializeField] GameObject selectionEffect;
@@ -14,6 +15,7 @@ public class DragAndDrop : MonoBehaviour{
 
     void Start() {
         
+        audioSource = GetComponent<AudioSource>();
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
         col = GetComponent<Collider2D>();
     }
@@ -30,6 +32,7 @@ public class DragAndDrop : MonoBehaviour{
                 Collider2D touchedCollider = Physics2D.OverlapPoint(touchPosition);
                 if( col ==  touchedCollider){
                     Instantiate(selectionEffect, transform.position, Quaternion.identity);
+                    audioSource.Play();
                     moveAllowed = true;
                 }
             }
