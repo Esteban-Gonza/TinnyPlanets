@@ -6,12 +6,14 @@ public class DragAndDrop : MonoBehaviour{
     
     bool moveAllowed;
     Collider2D col;
+    GameMaster gm;
 
     [Header("Particles")]
     [SerializeField] GameObject selectionEffect;
 
     void Start() {
         
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
         col = GetComponent<Collider2D>();
     }
 
@@ -40,6 +42,15 @@ public class DragAndDrop : MonoBehaviour{
 
                 moveAllowed = false;
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D colision) {
+        
+        if(colision.tag == "Planet"){
+
+            gm.GameOver();
+            Destroy(gameObject);
         }
     }
 }

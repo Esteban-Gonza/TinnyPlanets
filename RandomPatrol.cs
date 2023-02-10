@@ -19,15 +19,11 @@ public class RandomPatrol : MonoBehaviour{
     [Space][Header("Difficulty")]
     [SerializeField] float secondsToMaxDifficulty;
 
-    [Space][Header("UI")]
-    public GameObject restarPanel;
-
     Vector2 targetPosition;
 
     void Start() {
 
         targetPosition = GetRandomPosition();
-        restarPanel.SetActive(false);
     }
 
     void Update() {
@@ -47,14 +43,6 @@ public class RandomPatrol : MonoBehaviour{
         float randomY = Random.Range(minY, maxY);
 
         return new Vector2(randomX, randomY);
-    }
-
-    void OnTriggerEnter2D(Collider2D colision) {
-        
-        if(colision.tag == "Planet"){
-
-            restarPanel.SetActive(true);
-        }
     }
 
     float GetDifficultyPercent(){

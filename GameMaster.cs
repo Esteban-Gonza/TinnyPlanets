@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour{
     
+    public GameObject restarPanel;
+
+    void Start() {
+        restarPanel.SetActive(false);
+    }
+
+    public void GameOver(){
+        restarPanel.SetActive(true);
+    }
+
     public void GoToGameScene(){
         SceneManager.LoadScene("FirstLevel");
     }
