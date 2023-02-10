@@ -11,17 +11,23 @@ public class RandomPatrol : MonoBehaviour{
     public float maxX;
     public float maxY;
 
-    [Space][Header("")]
+    [Space][Header("Speed")]
     [SerializeField] float minSpeed;
     [SerializeField] float maxSpeed;
     float speed;
+
+    [Space][Header("Difficulty")]
     [SerializeField] float secondsToMaxDifficulty;
+
+    [Space][Header("UI")]
+    public GameObject restarPanel;
 
     Vector2 targetPosition;
 
     void Start() {
 
         targetPosition = GetRandomPosition();
+        restarPanel.SetActive(false);
     }
 
     void Update() {
@@ -47,7 +53,7 @@ public class RandomPatrol : MonoBehaviour{
         
         if(colision.tag == "Planet"){
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            restarPanel.SetActive(true);
         }
     }
 
