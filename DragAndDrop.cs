@@ -7,14 +7,12 @@ public class DragAndDrop : MonoBehaviour{
     bool moveAllowed;
     Collider2D col;
 
+    [Header("Particles")]
+    [SerializeField] GameObject selectionEffect;
+
     void Start() {
         
         col = GetComponent<Collider2D>();
-    }
-
-    void Update() {
-        
-        
     }
 
     void FixedUpdate() {
@@ -28,6 +26,7 @@ public class DragAndDrop : MonoBehaviour{
 
                 Collider2D touchedCollider = Physics2D.OverlapPoint(touchPosition);
                 if( col ==  touchedCollider){
+                    Instantiate(selectionEffect, transform.position, Quaternion.identity);
                     moveAllowed = true;
                 }
             }
