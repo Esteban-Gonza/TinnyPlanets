@@ -10,6 +10,7 @@ public class DragAndDrop : MonoBehaviour{
 
     [Header("Particles")]
     [SerializeField] GameObject selectionEffect;
+    [SerializeField] GameObject deathEffect;
 
     void Start() {
         
@@ -49,6 +50,7 @@ public class DragAndDrop : MonoBehaviour{
         
         if(colision.tag == "Planet"){
 
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
             gm.GameOver();
             Destroy(gameObject);
         }

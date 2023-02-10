@@ -12,6 +12,10 @@ public class GameMaster : MonoBehaviour{
     }
 
     public void GameOver(){
+        Invoke("Delay", 1.5f);
+    }
+
+    void Delay(){
         restarPanel.SetActive(true);
     }
 
