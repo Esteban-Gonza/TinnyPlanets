@@ -7,9 +7,10 @@ using TMPro;
 public class GameMaster : MonoBehaviour{
     
     public GameObject restarPanel;
-
-    public TMP_Text score;
+    public TMP_Text timerDisplay;
+    public float timer;
     bool hasLost;
+
 
     void Start() {
         restarPanel.SetActive(false);
@@ -18,7 +19,13 @@ public class GameMaster : MonoBehaviour{
     void Update() {
         
         if(hasLost == false){
-            score.text = Time.time.ToString("F0");
+            timerDisplay.text = timer.ToString("F0");
+        }
+
+        if(timer < 0){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }else{
+            timer -= Time.deltaTime;
         }
     }
 
