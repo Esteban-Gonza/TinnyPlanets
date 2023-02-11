@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour{
         
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-        if(Vector2.Distance(transform.position, target) < 2f){
+        if(Vector2.Distance(transform.position, target) == 0){
             Destroy(gameObject);
         }
     }

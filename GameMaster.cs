@@ -39,7 +39,7 @@ public class GameMaster : MonoBehaviour{
     }
 
     public void GoToGameScene(){
-        SceneManager.LoadScene("FirstLevel");
+        SceneManager.LoadScene("DragAndDrop");
     }
 
     public void Restart(){
