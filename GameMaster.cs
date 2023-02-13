@@ -9,8 +9,8 @@ public class GameMaster : MonoBehaviour{
     public GameObject restarPanel;
     public TMP_Text timerDisplay;
     public float timer;
-    bool hasLost;
 
+    bool hasLost;
 
     void Start() {
         restarPanel.SetActive(false);
@@ -36,17 +36,5 @@ public class GameMaster : MonoBehaviour{
 
     void Delay(){
         restarPanel.SetActive(true);
-    }
-
-    public void GoToGameScene(){
-        SceneManager.LoadScene("DragAndDrop");
-    }
-
-    public void Restart(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void GoToMainMenu(){
-        SceneManager.LoadScene("MainMenu");
     }
 }

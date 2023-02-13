@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DragAndDrop : MonoBehaviour{
     
     bool moveAllowed;
+    bool isOnPlayScreen;
+    Scene currentScene;
     Collider2D col;
     GameMaster gm;
     AudioSource audioSource;
@@ -18,10 +21,17 @@ public class DragAndDrop : MonoBehaviour{
         audioSource = GetComponent<AudioSource>();
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
         col = GetComponent<Collider2D>();
+        currentScene = SceneManager.GetActiveScene();
     }
 
     void FixedUpdate() {
         
+        /*if(currentScene.buildIndex != 0){
+            isOnPlayScreen = true;
+        }else{
+            isOnPlayScreen = false;
+        }*/
+
         if(Input.touchCount > 0){
 
             Touch touch = Input.GetTouch(0);
