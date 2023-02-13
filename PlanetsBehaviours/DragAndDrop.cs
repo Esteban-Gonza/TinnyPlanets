@@ -65,6 +65,7 @@ public class DragAndDrop : MonoBehaviour{
 
             Instantiate(deathEffect, transform.position, Quaternion.identity);
             gm.GameOver();
+            gameObject.GetComponent<DragAndDrop>().enabled = false;
             Destroy(gameObject);
         }
     }

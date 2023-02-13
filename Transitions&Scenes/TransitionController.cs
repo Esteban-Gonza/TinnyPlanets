@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class TransitionController : MonoBehaviour{
     
     Animator transitionAnim;
-    public string nextLevel;
 
     void Start() {
         transitionAnim = GetComponent<Animator>();
@@ -18,11 +17,19 @@ public class TransitionController : MonoBehaviour{
         transitionAnim.SetTrigger("ShowLevels");
     }
 
-    public void TransitionBackToMenu(){
-        transitionAnim.SetTrigger("BackToMenu");
+    public void TransitionShowCredits(){
+        transitionAnim.SetTrigger("ShowCredits");
     }
 
-    public void TransitionBetweenScenes(){
+    public void TransitionBackFromLevels(){
+        transitionAnim.SetTrigger("BackFromLevels");
+    }
+
+    public void TransitionBackFromCredits(){
+        transitionAnim.SetTrigger("BackFromCredits");
+    }
+
+    public void TransitionToGame(){
         transitionAnim.SetTrigger("ToGame");
     }
 
@@ -32,7 +39,17 @@ public class TransitionController : MonoBehaviour{
         LevelLoader.LoadLevel(sceneName);
     }
 
+    public void ChangeLevel(string sceneName){
+        SceneManager.LoadScene(sceneName);
+    }
+
     public void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    //Go to a web page out of the game
+    public void GoToPage(string enlace){
+
+        Application.OpenURL(enlace);
     }
 }
